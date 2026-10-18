@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Field Reports</string>
+    <!-- Change this link if the page address ever changes -->
+    <string name="app_url" translatable="false">https://claude.ai/artifact/QhniYJPvv63rsh2JR4W7wo</string>
+    <string name="no_browser">No web browser found on this phone.</string>
+</resources>
