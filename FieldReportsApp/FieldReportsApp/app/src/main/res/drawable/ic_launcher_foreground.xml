@@ -4,22 +4,13 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- clipboard board -->
+    <!-- soft ground shadow under the pin -->
+    <path
+        android:fillColor="#59FFFFFF"
+        android:pathData="M42,82 a12,3 0 1 0 24,0 a12,3 0 1 0 -24,0 Z" />
+    <!-- map pin with a check mark cut out of it -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M34,30 h40 a4,4 0 0 1 4,4 v46 a4,4 0 0 1 -4,4 h-40 a4,4 0 0 1 -4,-4 v-46 a4,4 0 0 1 4,-4 z" />
-    <path
-        android:fillColor="#52759B"
-        android:pathData="M36,38 h36 v40 h-36 z" />
-    <!-- check mark -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M43,58 L51,66 L66,48" />
-    <!-- clip -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M44,26 h20 v8 h-20 z" />
+        android:fillType="evenOdd"
+        android:pathData="M54,26 C43.5,26 35,34.5 35,45 C35,59 54,78 54,78 C54,78 73,59 73,45 C73,34.5 64.5,26 54,26 Z M44.5,46 L47.2,43.3 L51.5,47.6 L61.5,36.5 L64.3,39.2 L51.7,53.2 Z" />
 </vector>

@@ -1,20 +1,26 @@
-# Field Reports (Android app)
+# Field Reports
 
-A small Android app that opens the Field Reports page from the home screen.
+Two parts in one repository:
 
-## Build the APK on GitHub
-1. Unzip this folder first. In your GitHub repository choose **Add file > Upload files** and drag in the CONTENTS (settings.gradle, build.gradle, app, .github, and the other files), not the zip itself.
-2. Open the repository's **Actions** tab. The "Build Android APK" workflow runs on every push,
-   or press **Run workflow**.
-3. When it finishes (about 3 to 5 minutes), open the run and download **FieldReports-debug-apk**
-   from the Artifacts section. Unzip it to get `app-debug.apk`.
+* `web/` : the Field Reports app as a normal website that installs on a phone like an app.
+  No Claude account, no Claude header. Reports and photos are saved on the device that is using it.
+* `app/` + the Gradle files : an optional Android shortcut app that opens the website.
 
-## Install on a phone
-Send `app-debug.apk` to the phone, tap it, and allow "Install unknown apps" when asked.
+## 1. Publish the web app (free, GitHub Pages)
+1. Upload everything in this folder to your repository (drag in the CONTENTS, not the zip).
+2. In the repository open **Settings > Pages**. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Open the **Actions** tab. Run **Publish web app (GitHub Pages)** (or push any change).
+4. When it is green, your app is at `https://bombarules.github.io/FieldReport/`.
+
+## 2. Install it on a phone
+* Android (Chrome or Edge): open the link, tap the menu, choose **Install app** (or **Add to Home screen**).
+* iPhone (Safari): open the link, tap Share, choose **Add to Home Screen**.
+It then opens full screen with its own icon and works without internet.
+
+## 3. Optional Android APK
+The **Build Android APK** workflow builds `app-debug.apk`, a shortcut that opens the website above.
+Download it from the finished run under Artifacts. Uninstall any older copy first.
 
 ## Notes
-- The app opens the page in the phone's default browser. Change the default in
-  Android Settings > Apps > Default apps > Browser app.
-- Everyone still signs in to Claude, because the reports are stored in Claude.
-- To change the page link, edit `app/src/main/res/values/strings.xml` (`app_url`).
-- This is a debug build for sideloading. Publishing in Google Play needs a signed release build.
+* Data is stored on each device. Use **Export** on the Reports screen to save a CSV copy.
+* Clearing the browser's site data erases the reports on that device.
