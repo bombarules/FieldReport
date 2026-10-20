@@ -1,0 +1,47 @@
+name: Publish web app (GitHub Pages)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Find the web app folder
+        id: web
+        run: |
+          f=$(find . -name manifest.webmanifest -not -path './.git/*' | head -1)
+          if [ -z "$f" ]; then
+            echo "::error::Could not find the web app (manifest.webmanifest). Upload the web folder."
+            find . -not -path './.git/*' -type f | head -50
+            exit 1
+          fi
+          dir=$(dirname "$f")
+          echo "Web app folder: $dir"
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the web folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.web.outputs.dir }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
